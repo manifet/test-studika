@@ -18,20 +18,20 @@ const {SRC_PATH, DIST_PATH} = require("./gulp.config.js");
 
 const reload = browserSync.reload;
 const env = process.env.NODE_ENV;
-const envDev = env ==="dev"
-const envProd = env ==="prod"
+const envDev = env === "dev"
+const envProd = env === "prod"
 
 task("clean", () => {
     return src(`${DIST_PATH}/**/*`, {read: false}).pipe(rm());
 });
 
-task("copy:images", () => {
+task("images", () => {
     return src(`${SRC_PATH}/images/**/*`)
         .pipe(dest(`${DIST_PATH}/images`))
         .pipe(reload({stream: true}));
 });
 
-task("copy:fonts", () => {
+task("fonts", () => {
     return src(`${SRC_PATH}/fonts/**/*`)
         .pipe(
             rename((path) => {
@@ -86,17 +86,25 @@ task("server", () => {
     });
 });
 task("watch", () => {
-    watch(`${SRC_PATH}/images/**/*`, series("copy:images")).on("change", reload);
-    watch(`${SRC_PATH}/fonts/**/*`, series("copy:fonts")).on("change", reload);
+    watch(`${SRC_PATH}/images/**/*`, series("images")).on("change", reload);
+    watch(`${SRC_PATH}/fonts/**/*`, series("fonts")).on("change", reload);
     watch(`${SRC_PATH}/pages/**/*.pug`, series("html")).on("change", reload);
     watch(`${SRC_PATH}/styles/**/*.scss`, series("styles")).on("change", reload);
     watch(`${SRC_PATH}/scripts/**/*.js`, series("scripts")).on("change", reload);
 });
+
 task(
-    "default",
+    "dev",
+    series(
+        parallel("images", "fonts", "html", "styles", "scripts"),
+        parallel("watch", "server")
+    )
+);
+
+task(
+    "prod",
     series(
         "clean",
-        parallel("copy:images", "copy:fonts", "html", "styles", "scripts"),
-        parallel("watch", "server")
+        parallel("images", "fonts", "html", "styles", "scripts")
     )
 );

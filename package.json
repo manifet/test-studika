@@ -4,16 +4,17 @@
   "description": "Test job (site \"studiko\")",
   "main": "index.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=dev gulp",
-    "build": "cross-env NODE_ENV=prod gulp"
+    "deploy": "cross-env NODE_ENV=prod gulp prod && gh-pages -d dist",
+    "dev": "cross-env NODE_ENV=dev gulp dev",
+    "build": "cross-env NODE_ENV=prod gulp prod"
   },
   "author": "Danila Kiselev",
   "license": "ISC",
   "dependencies": {
     "cross-env": "^7.0.3",
+    "gh-pages": "^4.0.0",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^8.0.0",
-    "gulp-babel": "^8.0.0",
     "gulp-clean-css": "^4.3.0",
     "gulp-concat": "^2.6.1",
     "gulp-group-css-media-queries": "^1.2.2",
@@ -26,7 +27,10 @@
     "normalize.scss": "^0.1.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.20.5",
+    "@babel/preset-env": "^7.20.2",
     "browser-sync": "^2.27.10",
+    "gulp-babel": "^8.0.0",
     "gulp-sass": "^5.1.0",
     "gulp-sass-glob": "^1.1.0",
     "sass": "^1.56.1"
