@@ -2,59 +2,58 @@ header(class="header")
     div(class="header__container container")
         div(class="header__row")
             div(class="header__logo-wrap")
-                svg(class="header__logo" width="88" height="32" viewBox="0 0 88 32")
-                    use(xlink:href="./images/sprites.svg#logo")
-            div(class="header__location")
-                div(class="header__location-icon-wrap")
-                    svg(class="header__location-icon" width="32" height="32" viewBox="0 0 32 32")
-                        use(xlink:href="./images/sprites.svg#location")
-                span(class="header__location-text") Москва
-            div(class="header__search-wrap")
-                div(class="header__search-icon-wrap")
-                    svg(class="header__search-icon" width="17" height="17" viewBox="0 0 17 17")
+                a(class="header__logo-link" href="./")
+                    svg(class="header__logo" width="88" height="32" viewBox="0 0 88 32")
+                        use(xlink:href="./images/sprites.svg#logo")
+                div(class="header__location")
+                    div(class="header__location-icon-wrap")
+                        svg(class="header__location-icon" width="32" height="32" viewBox="0 0 32 32")
+                            use(xlink:href="./images/sprites.svg#location")
+                        // Иконкой нельзя управлять из стилей, поэтому цвет заливки в svg
+                    span(class="header__location-city font-base") Москва
+            form(class="header__search-form" action="" method="GET")
+                input(class="header__search font-base" type="search" placeholder="Учебное заведение, специальность или профессия")
+                button(class="header__search-submit" type="submit")
+                    svg(class="header__search-icon" width="32" height="32" viewBox="0 0 32 32")
                         use(xlink:href="./images/sprites.svg#search")
-                input(class="header__search-input" type="search" placeholder="Учебное заведение, специальность или профессия")
             div(class="header__user-wrap")
-                div(class="header__favorite")
+                a(class="header__favorite font-base" href="./")
                     div(class="header__favorite-icon-wrap")
                         svg(class="header__favorite-icon" width="19" height="18" viewBox="0 0 19 18")
                             use(xlink:href="./images/sprites.svg#heart")
-                    span(class="header__favorite-value")
-                div(class="header__user")
+                    span(class="header__favorite-value") 1
+                a(class="header__user font-base" href="./")
                     span(class="header__user-name") Екатерина
                     div(class="header__user-photo-wrap")
                         img(class="header__user-photo" src="./images/avatar.jpg" alt="Ваша фотография")
                         // В макете не было полной фотографии, округление лечше делать через стили
         div(class="header__nav-bar")
-            div(class="nav__arrow-right")
-                svg(class="nav__arrow" width="32" height="32" viewBox="0 0 32 32")
-                    use(xlink:href="./images/sprites.svg#arrow-right")
             nav(class="nav")
                 ul(class="nav__list")
+                    li(class="nav__item nav__item--active")
+                        a(class="nav__item-link font-base" href="#") Вузы
                     li(class="nav__item")
-                        a(class="nav__item-link" href="#") Вузы
+                        a(class="nav__item-link font-base" href="#") Колледжи
                     li(class="nav__item")
-                        a(class="nav__item-link" href="#") Колледжи
+                        a(class="nav__item-link font-base" href="#") Техникумы
                     li(class="nav__item")
-                        a(class="nav__item-link" href="#") Техникумы
+                        a(class="nav__item-link font-base" href="#") Училища
                     li(class="nav__item")
-                        a(class="nav__item-link" href="#") Училища
+                        a(class="nav__item-link font-base" href="#") Специальности
                     li(class="nav__item")
-                        a(class="nav__item-link" href="#") Специальности
+                        a(class="nav__item-link font-base" href="#") Профессии
                     li(class="nav__item")
-                        a(class="nav__item-link" href="#") Профессии
+                        a(class="nav__item-link font-base" href="#") Отзывы
                     li(class="nav__item")
-                        a(class="nav__item-link" href="#") Отзывы
+                        a(class="nav__item-link font-base" href="#") Учебным заведениям
                     li(class="nav__item")
-                        a(class="nav__item-link" href="#") Учебным заведениям
+                        a(class="nav__item-link font-base" href="#") Тест на профориентацию
                     li(class="nav__item")
-                        a(class="nav__item-link" href="#") Тест на профориентацию
+                        a(class="nav__item-link font-base" href="#") Вузы
                     li(class="nav__item")
-                        a(class="nav__item-link" href="#") Вузы
+                        a(class="nav__item-link font-base" href="#") Колледжи
                     li(class="nav__item")
-                        a(class="nav__item-link" href="#") Колледжи
-                    li(class="nav__item")
-                        a(class="nav__item-link" href="#") Техникумы
-            div(class="nav__arrow-right")
-                svg(class="nav__arrow" width="32" height="32" viewBox="0 0 32 32")
-                    use(xlink:href="./images/sprites.svg#arrow-right")
+                        a(class="nav__item-link font-base" href="#") Техникумы
+                div(class="nav__arrow-wrap")
+                    svg(class="nav__arrow" width="32" height="32" viewBox="0 0 32 32")
+                        use(xlink:href="./images/sprites.svg#arrow-right")

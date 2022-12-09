@@ -1,14 +1,11 @@
-// px to rem
+/* Pixels to rem function:
+  ========================================================================== */
 @function rem($pixels, $context: $mainFontSize) {
-  @if (unitless($pixels)) {
-    $pixels: $pixels * 1px;
-  }
-  @if (unitless($context)) {
-    $context: $context * 1px;
-  }
-  @return calc($pixels / $context);
+  @return calc($pixels / $context) * 1rem;
 }
 
+/* Adaptive:
+  ========================================================================== */
 @mixin tables {
   @media screen and (max-width: $tableWidth) {
     @content;

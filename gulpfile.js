@@ -21,10 +21,6 @@ const env = process.env.NODE_ENV;
 const envDev = env === "dev"
 const envProd = env === "prod"
 
-task("clean", () => {
-    return src(`${DIST_PATH}/**/*`, {read: false}).pipe(rm());
-});
-
 task("images", () => {
     return src(`${SRC_PATH}/images/**/*`)
         .pipe(dest(`${DIST_PATH}/images`))
@@ -59,7 +55,7 @@ task('scripts', () => {
 
 task("html", () => {
     return src(`${SRC_PATH}/pages/*.pug`)
-        .pipe(pug({pretty: false}))
+        .pipe(pug())
         .pipe(dest(`${DIST_PATH}`))
         .pipe(reload({stream: true}));
 });
@@ -76,6 +72,10 @@ task("styles", () => {
         .pipe(concat("styles.min.css"))
         .pipe(dest(`${DIST_PATH}`))
         .pipe(reload({stream: true}));
+});
+
+task("clean", () => {
+    return src(`${DIST_PATH}/**/*`, {read: false}).pipe(rm());
 });
 
 task("server", () => {
