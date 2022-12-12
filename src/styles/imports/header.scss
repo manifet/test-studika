@@ -1,12 +1,27 @@
 .header {
-  padding-top: rem(24px);
-  padding-bottom: rem(16px);
+
+  padding: rem(24px) 0 rem(16px);
+  @include phones {
+    padding: 1rem 0;
+  }
 
   &__row {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: rem(24px);
+    padding: 0 0.5rem;
+  }
+
+  &__hamburger {
+    display: none;
+    @include phones {
+      display: flex;
+    }
+
+    &-icon {
+      fill: $black;
+    }
   }
 
   &__logo {
@@ -16,11 +31,17 @@
       display: flex;
       align-items: center;
       margin-right: 1rem;
+      @include phones {
+        margin-right: 0;
+      }
     }
 
     &-link {
       margin-right: rem(16px);
       display: flex;
+      @include phones {
+        margin-right: 0;
+      }
     }
   }
 
@@ -28,6 +49,9 @@
     display: flex;
     align-items: center;
     cursor: pointer;
+    @include phones {
+      display: none;
+    }
 
     &-icon {
       fill: none;
@@ -73,6 +97,9 @@
       display: flex;
       position: relative;
       margin-right: 1rem;
+      @include phones {
+        display: none;
+      }
     }
   }
 
@@ -80,6 +107,9 @@
     display: flex;
     align-items: center;
     margin-right: rem(32px);
+    @include phones {
+      margin-right: 0;
+    }
 
     &-icon {
       fill: $grey;
@@ -94,6 +124,9 @@
   &__user {
     display: flex;
     align-items: center;
+    @include phones {
+      display: none;
+    }
 
     &-wrap {
       display: flex;
@@ -102,6 +135,7 @@
 
     &-name {
       margin-right: rem(7px);
+
     }
 
     &-photo {
@@ -123,7 +157,12 @@
   overflow: hidden;
   height: rem(24px);
   position: relative;
-  &:after{
+  @include phones {
+    height: auto;
+    background: $greyF1;
+  }
+
+  &:after {
     content: " ";
     display: block;
     height: 100%;
@@ -133,10 +172,14 @@
     background: linear-gradient(to right, transparent, white 65%);
     z-index: 10;
   }
+
   &__list {
     display: flex;
     align-items: center;
     position: absolute;
+    @include phones {
+      display: none;
+    }
   }
 
   &__item {
@@ -160,16 +203,50 @@
   }
 
   &__arrow {
-    fill: none;
-    stroke: $black;
+    &-right {
+      fill: none;
+      stroke: $black;
+    }
+
+    &-left {
+      fill: none;
+      stroke: $grey;
+    }
+  }
+
+  &__back {
+    display: flex;
+
     &-wrap {
-      position: absolute;
-      z-index: 100;
-      right: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      display: flex;
-      cursor: pointer;
+      display: none;
+      margin-left: 1.5rem;
+      align-items: center;
+      @include phones {
+        display: flex;
+      }
+    }
+
+    &-title {
+      font-family: 'Formular';
+      font-style: normal;
+      font-weight: 500;
+      font-size: rem(12px);
+      line-height: rem(16px);
+      letter-spacing: rem(2px);
+      text-transform: uppercase;
+    }
+  }
+
+  &__next-wrap {
+    position: absolute;
+    z-index: 100;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    cursor: pointer;
+    @include phones {
+      display: none;
     }
   }
 }
